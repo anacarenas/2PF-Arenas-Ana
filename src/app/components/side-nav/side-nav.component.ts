@@ -7,9 +7,11 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   styleUrls: ['./side-nav.component.css']
 })
 export class SideNavComponent implements OnInit {
-
   ngOnInit(): void {
 
+  }
+  public get currentUser() {
+    return this.usuarioService.rolActual;
   }
 
   adminNav = [
@@ -27,6 +29,11 @@ export class SideNavComponent implements OnInit {
     {name:"Iniciar Sesion" , route: "", icon:"login"},
   ]
 
+  actualizarRol(rol:Event){
+    console.log("hola");
+    this.ngOnInit();   
+
+  }
   constructor(private usuarioService:UsuarioService) {
     console.log(this.isAdmin);
   }

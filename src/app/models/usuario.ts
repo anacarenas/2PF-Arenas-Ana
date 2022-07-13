@@ -1,5 +1,5 @@
 export class Usuario {
     usuario: string ="";
-    contraseña: string="";
+    contrasenia: string="";
     rolCode: number =0;
 }

@@ -12,14 +12,14 @@ export class UsuarioService {
   public rolActual:number=2;
   constructor() { }
   listUsuario:Usuario[]=[
-    {usuario: "Jose", contraseña: "Ramirez", rolCode:1},
-    {usuario: "Maria ", contraseña: "Guzman",rolCode:2},
-    {usuario: "Juana ", contraseña: "Rojas", rolCode:1},
+    {usuario: "user", contrasenia: "user", rolCode:1},
+    {usuario: "admin", contrasenia: "admin",rolCode:2},
+    {usuario: "user2", contrasenia: "user", rolCode:1},
   ];
 
   editUsuario(Usuario: Usuario, idUsuario: number){
     this.listUsuario[idUsuario].usuario = Usuario.usuario;
-    this.listUsuario[idUsuario].contraseña = Usuario.contraseña;
+    this.listUsuario[idUsuario].contrasenia = Usuario.contrasenia;
     this.listUsuario[idUsuario].rolCode = Usuario.rolCode;
   }
 
@@ -51,7 +51,7 @@ export class UsuarioService {
 
   searchUsuariosByName(name: string){
     return from(this.listUsuario).pipe(
-      filter((usuario)=>(usuario.usuario + ' ' + usuario.contraseña).toLowerCase().includes(name.toLowerCase())),
+      filter((usuario)=>(usuario.usuario + ' ' + usuario.contrasenia).toLowerCase().includes(name.toLowerCase())),
       map((usuario) => {
       return usuario}),
       catchError((error) => {throw new Error(error)})

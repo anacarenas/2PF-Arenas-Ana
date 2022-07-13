@@ -26,10 +26,7 @@ export class AddEditCursoComponent implements OnInit {
               private aRoute: ActivatedRoute) { 
     this.myForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.maxLength(20)]],
-      apellidos: ['', [Validators.required, Validators.maxLength(20)]],
-      correo: ['',  [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$')]],
       codigo: ['', [Validators.required, Validators.pattern('[- +()0-9]+')]],
-      estado: ['', [Validators.required]]
     });
     const idParam = 'id';
     this.idCurso = this.aRoute.snapshot.params[idParam];
@@ -46,7 +43,6 @@ export class AddEditCursoComponent implements OnInit {
       const curso: Curso = {
       nombre: this.myForm.get('nombre')!.value,
       codigo: this.myForm.get('codigo')!.value,
-
     };
 
     if (this.idCurso !== undefined) {
@@ -61,7 +57,7 @@ export class AddEditCursoComponent implements OnInit {
     this.snackBar.open('El Curso fue registrado con exito!', '', {
       duration: 3000
     });
-    this.route.navigate(['/']);
+    this.route.navigate(['/listCursos']);
   }
 
   editarCurso(Curso: Curso) {
@@ -69,7 +65,7 @@ export class AddEditCursoComponent implements OnInit {
     this.snackBar.open('El Curso fue actualizado con exito!', '', {
       duration: 3000
     });
-    this.route.navigate(['/']);
+    this.route.navigate(['/listCursos']);
   }
 
   esEditar() {
